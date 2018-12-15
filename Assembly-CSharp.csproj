@@ -318,6 +318,8 @@
     <Compile Include="Assets\Oculus\Spatializer\Scripts\ONSPProfiler.cs" />
     <Compile Include="Assets\Oculus\Spatializer\Scripts\ONSPVersion.cs" />
     <Compile Include="Assets\Scripts\BallCollision.cs" />
+    <Compile Include="Assets\Scripts\BallPinTrigger.cs" />
+    <Compile Include="Assets\Scripts\BowlManager.cs" />
     <Compile Include="Assets\Scripts\OutOfBounds.cs" />
     <Compile Include="Assets\Scripts\PlayerControls.cs" />
     <None Include="Assets\Oculus\Avatar\Content\Materials\AvatarMaterialStateShader.cginc" />
