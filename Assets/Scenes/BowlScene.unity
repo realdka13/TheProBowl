@@ -250,6 +250,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: -45, y: 0, z: 0}
+--- !u!1 &332320108 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 332320108, guid: 9e7407983c18f144d80dde8b2c577360,
+    type: 3}
+  m_PrefabInstance: {fileID: 875228017182831444}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &631005134
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -291,7 +297,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -402,33 +408,8 @@ Transform:
   m_LocalScale: {x: 10, y: 0.15, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &236800868536600233 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 236800868536600233, guid: a10c48065f2aba4499ce3aa42888a61a,
-    type: 3}
-  m_PrefabInstance: {fileID: 562293725291929971}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &236800868536600234
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 236800868536600233}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5eec24593f4553c4b8f3fb6f82dcce37, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &562293725291929971
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -498,22 +479,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1862052326464581776, guid: a10c48065f2aba4499ce3aa42888a61a,
         type: 3}
+      propertyPath: pinSensor
+      value: 
+      objectReference: {fileID: 332320108}
+    - target: {fileID: 1862052326464581776, guid: a10c48065f2aba4499ce3aa42888a61a,
+        type: 3}
       propertyPath: bowlingBall
       value: 
       objectReference: {fileID: 892548469}
-    - target: {fileID: 416812147, guid: a10c48065f2aba4499ce3aa42888a61a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 416812147, guid: a10c48065f2aba4499ce3aa42888a61a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 18.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 591857889848298059, guid: a10c48065f2aba4499ce3aa42888a61a,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a10c48065f2aba4499ce3aa42888a61a, type: 3}
 --- !u!1001 &875228017182831444
@@ -587,26 +560,22 @@ PrefabInstance:
       propertyPath: bowlManager
       value: 
       objectReference: {fileID: 1862052326464581775}
-    - target: {fileID: 875228016916940829, guid: 9e7407983c18f144d80dde8b2c577360,
-        type: 3}
+    - target: {fileID: 332320112, guid: 9e7407983c18f144d80dde8b2c577360, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.752
+      value: 0.229
       objectReference: {fileID: 0}
-    - target: {fileID: 7720066798932080466, guid: 9e7407983c18f144d80dde8b2c577360,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.1039
+    - target: {fileID: 332320109, guid: 9e7407983c18f144d80dde8b2c577360, type: 3}
+      propertyPath: m_Size.x
+      value: 1.1
       objectReference: {fileID: 0}
-    - target: {fileID: 875228017067458781, guid: 9e7407983c18f144d80dde8b2c577360,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
+    - target: {fileID: 332320109, guid: 9e7407983c18f144d80dde8b2c577360, type: 3}
+      propertyPath: m_Size.y
+      value: 0.4
       objectReference: {fileID: 0}
-    - target: {fileID: 4410458443474547697, guid: 9e7407983c18f144d80dde8b2c577360,
-        type: 3}
-      propertyPath: m_SpotAngle
-      value: 80.1
-      objectReference: {fileID: 0}
+    - target: {fileID: 332320110, guid: 9e7407983c18f144d80dde8b2c577360, type: 3}
+      propertyPath: bowlManager
+      value: 
+      objectReference: {fileID: 1862052326464581775}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e7407983c18f144d80dde8b2c577360, type: 3}
 --- !u!1 &1862052326464581775 stripped

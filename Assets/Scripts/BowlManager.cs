@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BowlManager : MonoBehaviour
 {
+    public GameObject pinSensor;
 
     public GameObject bowlingBall;
 
@@ -16,11 +17,19 @@ public class BowlManager : MonoBehaviour
         bowlingBall = Instantiate(bowlingBall, new Vector3(0, .25f, 0), Quaternion.identity);
     }
 
+    //Reset Ball if it goes out of bounds
     public void BallOutOfBounds()
     {
         ResetBall();
     }
 
+    //If ball is found, tell PinCounter that its been found
+    public void BallFound()
+    {
+        pinSensor.GetComponent<PinCounter>().BallFound();
+    }
+
+    //Roll is complete
     public void RollComplete()
     {
         ResetBall();
