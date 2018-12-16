@@ -7,7 +7,7 @@ public class BowlManager : MonoBehaviour
 
     public GameObject bowlingBall;
 
-    public void ResetBall()
+    private void ResetBall()
     {
         //Destory Bowling Ball
         Destroy(bowlingBall);
@@ -15,4 +15,15 @@ public class BowlManager : MonoBehaviour
         //Respawn Bowling Ball
         bowlingBall = Instantiate(bowlingBall, new Vector3(0, .25f, 0), Quaternion.identity);
     }
+
+    public void BallOutOfBounds()
+    {
+        ResetBall();
+    }
+
+    public void RollComplete()
+    {
+        ResetBall();
+    }
+
 }

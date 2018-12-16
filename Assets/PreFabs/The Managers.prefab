@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fc9cf482c0c18240914bae13a4199ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bowlingBall: {fileID: 0}
 --- !u!1 &2258592698688344027
 GameObject:
   m_ObjectHideFlags: 0

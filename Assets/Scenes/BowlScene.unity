@@ -362,7 +362,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e2011800b706cce44bf35d05e887787b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -398,11 +398,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1002410780}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -5}
-  m_LocalScale: {x: 10, y: 0.05, z: 10}
+  m_LocalPosition: {x: 0, y: -0.05, z: -5}
+  m_LocalScale: {x: 10, y: 0.15, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &562293725291929971
 PrefabInstance:
@@ -454,7 +454,7 @@ PrefabInstance:
     - target: {fileID: 1185216556762766540, guid: a10c48065f2aba4499ce3aa42888a61a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1185216556762766540, guid: a10c48065f2aba4499ce3aa42888a61a,
         type: 3}
@@ -545,15 +545,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 875228016820524825, guid: 9e7407983c18f144d80dde8b2c577360,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.866
-      objectReference: {fileID: 0}
     - target: {fileID: 363357263, guid: 9e7407983c18f144d80dde8b2c577360, type: 3}
       propertyPath: bowlManager
       value: 
       objectReference: {fileID: 1862052326464581775}
+    - target: {fileID: 875228017331316559, guid: 9e7407983c18f144d80dde8b2c577360,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e7407983c18f144d80dde8b2c577360, type: 3}
 --- !u!1 &1862052326464581775 stripped
@@ -634,6 +634,11 @@ PrefabInstance:
       propertyPath: bowlingBall
       value: 
       objectReference: {fileID: 892548469}
+    - target: {fileID: 2325011398607669339, guid: 83e58aa279f8b8347b3efef800ad965d,
+        type: 3}
+      propertyPath: bowlManager
+      value: 
+      objectReference: {fileID: 1862052326464581775}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83e58aa279f8b8347b3efef800ad965d, type: 3}
 --- !u!1001 &6194137948874913672

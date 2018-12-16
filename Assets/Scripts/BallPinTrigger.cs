@@ -11,7 +11,7 @@ public class BallPinTrigger : MonoBehaviour
     {
         if (trigObject.tag == "BowlingBall")
         {
-            bowlManager.GetComponent<BowlManager>().ResetBall();
+            bowlManager.GetComponent<BowlManager>().RollComplete();
         }
     }
 }
