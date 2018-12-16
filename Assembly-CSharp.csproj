@@ -320,6 +320,7 @@
     <Compile Include="Assets\Scripts\BallCollision.cs" />
     <Compile Include="Assets\Scripts\BallPinTrigger.cs" />
     <Compile Include="Assets\Scripts\BowlManager.cs" />
+    <Compile Include="Assets\Scripts\HandPointer.cs" />
     <Compile Include="Assets\Scripts\OutOfBounds.cs" />
     <Compile Include="Assets\Scripts\Pin.cs" />
     <Compile Include="Assets\Scripts\PinCounter.cs" />
