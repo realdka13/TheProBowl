@@ -112,6 +112,25 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &46472499 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 236800868536600233, guid: a10c48065f2aba4499ce3aa42888a61a,
+    type: 3}
+  m_PrefabInstance: {fileID: 562293725291929971}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &46472501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 46472499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6b3f3e16c7f4aa458ae6ecd997ed951, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pinSet: {fileID: 3700501647929700586, guid: 2daf4dcc8e0d6ad4caa6f3157a40b396, type: 3}
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
@@ -560,22 +579,20 @@ PrefabInstance:
       propertyPath: bowlManager
       value: 
       objectReference: {fileID: 1862052326464581775}
-    - target: {fileID: 332320112, guid: 9e7407983c18f144d80dde8b2c577360, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.229
-      objectReference: {fileID: 0}
-    - target: {fileID: 332320109, guid: 9e7407983c18f144d80dde8b2c577360, type: 3}
-      propertyPath: m_Size.x
-      value: 1.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 332320109, guid: 9e7407983c18f144d80dde8b2c577360, type: 3}
-      propertyPath: m_Size.y
-      value: 0.4
-      objectReference: {fileID: 0}
     - target: {fileID: 332320110, guid: 9e7407983c18f144d80dde8b2c577360, type: 3}
       propertyPath: bowlManager
       value: 
       objectReference: {fileID: 1862052326464581775}
+    - target: {fileID: 875228018394485642, guid: 9e7407983c18f144d80dde8b2c577360,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 875228018394485642, guid: 9e7407983c18f144d80dde8b2c577360,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.45
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e7407983c18f144d80dde8b2c577360, type: 3}
 --- !u!1 &1862052326464581775 stripped

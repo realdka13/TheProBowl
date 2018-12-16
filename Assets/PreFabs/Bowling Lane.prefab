@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 332320108}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.364, z: 18.737}
+  m_LocalPosition: {x: 0, y: 0.229, z: 18.737}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 875228018109196006}
@@ -43,7 +43,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.1, z: 1}
+  m_Size: {x: 1.1, y: 0.4, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &332320110
 MonoBehaviour:
@@ -58,6 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bowlManager: {fileID: 0}
+  pinSet: {fileID: 3700501647929700586, guid: 2daf4dcc8e0d6ad4caa6f3157a40b396, type: 3}
 --- !u!1 &1131478991
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,27 +605,7 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.0100593865
       objectReference: {fileID: 0}
-    - target: {fileID: 5444428985058616316, guid: 2daf4dcc8e0d6ad4caa6f3157a40b396,
-        type: 3}
-      propertyPath: m_TagString
-      value: Pin
-      objectReference: {fileID: 0}
-    - target: {fileID: 5444428983509141201, guid: 2daf4dcc8e0d6ad4caa6f3157a40b396,
-        type: 3}
-      propertyPath: m_TagString
-      value: Pin
-      objectReference: {fileID: 0}
-    - target: {fileID: 5444428983879204604, guid: 2daf4dcc8e0d6ad4caa6f3157a40b396,
-        type: 3}
-      propertyPath: m_TagString
-      value: Pin
-      objectReference: {fileID: 0}
-    - target: {fileID: 5444428984484411542, guid: 2daf4dcc8e0d6ad4caa6f3157a40b396,
-        type: 3}
-      propertyPath: m_TagString
-      value: Pin
-      objectReference: {fileID: 0}
-    - target: {fileID: 5444428983479532128, guid: 2daf4dcc8e0d6ad4caa6f3157a40b396,
+    - target: {fileID: 5444428984327330048, guid: 2daf4dcc8e0d6ad4caa6f3157a40b396,
         type: 3}
       propertyPath: m_TagString
       value: Pin
@@ -634,7 +615,22 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Pin
       objectReference: {fileID: 0}
+    - target: {fileID: 5444428983879204604, guid: 2daf4dcc8e0d6ad4caa6f3157a40b396,
+        type: 3}
+      propertyPath: m_TagString
+      value: Pin
+      objectReference: {fileID: 0}
     - target: {fileID: 5444428983358582174, guid: 2daf4dcc8e0d6ad4caa6f3157a40b396,
+        type: 3}
+      propertyPath: m_TagString
+      value: Pin
+      objectReference: {fileID: 0}
+    - target: {fileID: 5444428983479532128, guid: 2daf4dcc8e0d6ad4caa6f3157a40b396,
+        type: 3}
+      propertyPath: m_TagString
+      value: Pin
+      objectReference: {fileID: 0}
+    - target: {fileID: 5444428983509141201, guid: 2daf4dcc8e0d6ad4caa6f3157a40b396,
         type: 3}
       propertyPath: m_TagString
       value: Pin
@@ -644,7 +640,12 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Pin
       objectReference: {fileID: 0}
-    - target: {fileID: 5444428984327330048, guid: 2daf4dcc8e0d6ad4caa6f3157a40b396,
+    - target: {fileID: 5444428985058616316, guid: 2daf4dcc8e0d6ad4caa6f3157a40b396,
+        type: 3}
+      propertyPath: m_TagString
+      value: Pin
+      objectReference: {fileID: 0}
+    - target: {fileID: 5444428984484411542, guid: 2daf4dcc8e0d6ad4caa6f3157a40b396,
         type: 3}
       propertyPath: m_TagString
       value: Pin

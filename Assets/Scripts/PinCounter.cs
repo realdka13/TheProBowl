@@ -40,17 +40,6 @@ public class PinCounter : MonoBehaviour
     //Called win pins finally settle
     private void PinsSettled()
     {
-
-        //TODO TEMP
-        foreach (Pin pin in GameObject.FindObjectsOfType<Pin>())
-        {
-            if (pin.IsStanding())
-            {
-                print(pin.name + " is Standing");
-            }
-        }
-
-
         print("Pins have settled, final count is: " + finalStandingCount);
         finalStandingCount = -1; //Reseting for next fram
         ballFound = false; //Resetting for next frame

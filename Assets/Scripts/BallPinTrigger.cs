@@ -6,7 +6,7 @@ public class BallPinTrigger : MonoBehaviour
 {
     public GameObject bowlManager;
 
-    //When Ball Triggers the Trigger, destroy and respawn Ball
+    //When Ball Triggers the Trigger, destroy and respawn Ball or the Pins as well
     private void OnTriggerEnter(Collider trigObject)
     {
         if (trigObject.tag == "BowlingBall")
@@ -16,7 +16,7 @@ public class BallPinTrigger : MonoBehaviour
 
         if (trigObject.tag == "Pin")
         {
-            Destroy(trigObject);
+            Destroy(trigObject.gameObject);
         }
     }
 }

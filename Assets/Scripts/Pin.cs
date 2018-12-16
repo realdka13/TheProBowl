@@ -33,5 +33,4 @@ public class Pin : MonoBehaviour
     {
         pinInPlay = true;
     }
-
 }
