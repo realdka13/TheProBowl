@@ -14,7 +14,7 @@ public class BowlManager : MonoBehaviour
         Destroy(bowlingBall);
 
         //Respawn Bowling Ball
-        bowlingBall = Instantiate(bowlingBall, new Vector3(0, .25f, 0), Quaternion.identity);
+        bowlingBall = Instantiate(bowlingBall, new Vector3(0, .25f, -.1f), Quaternion.identity);
     }
 
     //Reset Ball if it goes out of bounds
