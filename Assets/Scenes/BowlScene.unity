@@ -813,5 +813,20 @@ PrefabInstance:
       propertyPath: bowlManager
       value: 
       objectReference: {fileID: 1862052326464581775}
+    - target: {fileID: 3797676849339420937, guid: 3c97eac284aea9848b81d21ba6da2e5e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2927939615161996609, guid: 3c97eac284aea9848b81d21ba6da2e5e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3271149966686315144, guid: 3c97eac284aea9848b81d21ba6da2e5e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c97eac284aea9848b81d21ba6da2e5e, type: 3}

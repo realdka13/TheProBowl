@@ -40,6 +40,10 @@ public class RenewPins : MonoBehaviour
 
     public void RespawnPins()
     {
+        if (FindObjectOfType<Pin>()) //Check if There are any Pins remaining and destroy them if so
+        {
+            Destroy(FindObjectOfType<Pin>().transform.parent.gameObject);
+        }
         Instantiate(pinSet, new Vector3(0, .5f, 18.8293f), Quaternion.Euler(new Vector3(-90,0,0)));
         foreach (Pin pin in GameObject.FindObjectsOfType<Pin>())
         {
