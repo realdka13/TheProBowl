@@ -8,4 +8,6 @@ public class BallVelocity : MonoBehaviour
     {
         GetComponent<Rigidbody>().maxAngularVelocity = 100;
     }
+
+    // To find ball velocity upon release, look at OVRGrabable and search "Custom"
 }

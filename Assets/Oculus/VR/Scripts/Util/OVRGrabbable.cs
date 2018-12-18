@@ -119,14 +119,21 @@ public class OVRGrabbable : MonoBehaviour
         gameObject.GetComponent<Rigidbody>().isKinematic = true;
     }
 
-	/// <summary>
-	/// Notifies the object that it has been released.
-	/// </summary>
+    /// <summary>
+    /// Notifies the object that it has been released.
+    /// </summary>
+
+    //Player Data
+    private GameObject playerController;    //Custon Variable (Get Player Controller)
+
+
 	virtual public void GrabEnd(Vector3 linearVelocity, Vector3 angularVelocity)
     {
+        playerController = FindObjectOfType<OVRPlayerController>().gameObject;  //Custom (Find Player Controller)
+
         Rigidbody rb = gameObject.GetComponent<Rigidbody>();
         rb.isKinematic = m_grabbedKinematic;
-        rb.velocity = linearVelocity;
+        rb.velocity = linearVelocity + playerController.GetComponent<CharacterController>().velocity;         //Custom Code here (adds player Velocity to release object)
         rb.angularVelocity = angularVelocity;
         m_grabbedBy = null;
         m_grabbedCollider = null;

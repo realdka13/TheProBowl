@@ -22,14 +22,14 @@ public class BowlManager : MonoBehaviour
 
         //Respawn Bowling Ball
         bowlingBall = Instantiate(bowlingBall, new Vector3(0, .25f, -.1f), Quaternion.identity);
-        ballThrown = false;
-        UI.GetComponent<UIManager>().ResetMaxVel();
     }
 
     //If ball is found, tell PinCounter that its been found
     public void BallFound()
     {
         pinSensor.GetComponent<PinCounter>().BallFound();
+        ballThrown = false;
+        UI.GetComponent<UIManager>().ResetMaxVel();
     }
 
     //Roll is complete
@@ -64,7 +64,10 @@ public class BowlManager : MonoBehaviour
     {
         if (bowlingBall != null && ballThrown == true)
         {
-            return bowlingBall.GetComponent<Rigidbody>().velocity.magnitude;
+            float ballX = bowlingBall.GetComponent<Rigidbody>().velocity.x;
+            float ballZ = bowlingBall.GetComponent<Rigidbody>().velocity.z;
+            float ballVel = Mathf.Sqrt(Mathf.Pow(ballX, 2) + Mathf.Pow(ballZ, 2));
+            return ballVel; //bowlingBall.GetComponent<Rigidbody>().velocity.magnitude;
         }
         else
         {
