@@ -2,29 +2,48 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 public class HandPointer : MonoBehaviour
 {
 
     public Transform rightHandAnchor;
     public Transform leftHandAnchor;
+    public GameObject UI;
     public LineRenderer lineRenderer = null;
     bool useLeftLaser = false;
     bool useRightLaser = true;
+
+    private void Start()
+    {
+        
+    }
 
     // Update is called once per frame
     void Update()
     {
         if (OVRInput.Get(OVRInput.Button.SecondaryThumbstick))
         {
+            //Switch Laser to Right
             useRightLaser = true;
             useLeftLaser = false;
+
+            //Switch Interactions to right
+            UI.GetComponentInChildren<OVRGazePointer>().rayTransform = rightHandAnchor;
+            UI.GetComponentInChildren<OVRInputModule>().rayTransform = rightHandAnchor;
+            UI.GetComponentInChildren<OVRInputModule>().joyPadClickButton = OVRInput.Button.SecondaryIndexTrigger;
         }
 
         if (OVRInput.Get(OVRInput.Button.PrimaryThumbstick))
         {
+            //Switch Laser To Left
             useRightLaser = false;
             useLeftLaser = true;
+
+            //Switch Interaction to Left
+            UI.GetComponentInChildren<OVRGazePointer>().rayTransform = leftHandAnchor;
+            UI.GetComponentInChildren<OVRInputModule>().rayTransform = leftHandAnchor;
+            UI.GetComponentInChildren<OVRInputModule>().joyPadClickButton = OVRInput.Button.PrimaryIndexTrigger;
         }
 
         if (useRightLaser)//Use the laser with Right Hand
@@ -32,13 +51,14 @@ public class HandPointer : MonoBehaviour
             Ray pointer = new Ray(rightHandAnchor.position, rightHandAnchor.forward);
             RaycastHit hit;//get the hit object of a raycast
             lineRenderer.SetPosition(0, pointer.origin);//Line render start point
-            if (Physics.Raycast(pointer, out hit, 500f)) //Stop if it hits something
+            if (Physics.Raycast(pointer, out hit, 2.5f) && hit.transform.gameObject.tag == "UI") //Stop if it hits something
             {
+                lineRenderer.enabled = true;
                 lineRenderer.SetPosition(1, hit.point);
             }
-            else //Draw line 500 units if nothing is hit
+            else
             {
-                lineRenderer.SetPosition(1, pointer.origin + pointer.direction * 500f);
+                lineRenderer.enabled = false;
             }
         }
         if (useLeftLaser)//Use laser with left hand
@@ -46,13 +66,14 @@ public class HandPointer : MonoBehaviour
             Ray pointer = new Ray(leftHandAnchor.position, leftHandAnchor.forward);
             RaycastHit hit;//get the hit object of a raycast
             lineRenderer.SetPosition(0, pointer.origin);//Line render start point
-            if (Physics.Raycast(pointer, out hit, 500f)) //Stop if it hits something
+            if (Physics.Raycast(pointer, out hit, 2.5f) && hit.transform.gameObject.tag == "UI") //Stop if it hits something
             {
+                lineRenderer.enabled = true;
                 lineRenderer.SetPosition(1, hit.point);
             }
-            else //Draw line 500 units if nothing is hit
+            else
             {
-                lineRenderer.SetPosition(1, pointer.origin + pointer.direction * 500f);
+                lineRenderer.enabled = false;
             }
         }
     }

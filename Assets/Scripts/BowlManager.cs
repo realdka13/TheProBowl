@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class BowlManager : MonoBehaviour
 {
-    public GameObject pinSensor;
+    public GameObject cleanupManager;
 
+    public GameObject pinSensor;
     public GameObject bowlingBall;
 
     private void ResetBall()
     {
         //Destory Bowling Ball
-        Destroy(bowlingBall);
+        if (GameObject.FindGameObjectWithTag("BowlingBall"))
+        {
+            Destroy(bowlingBall);
+        }
 
         //Respawn Bowling Ball
         bowlingBall = Instantiate(bowlingBall, new Vector3(0, .25f, -.1f), Quaternion.identity);
@@ -31,6 +35,21 @@ public class BowlManager : MonoBehaviour
 
     //Roll is complete
     public void RollComplete()
+    {
+        ResetBall();
+    }
+
+    public void ResetPins()
+    {
+        cleanupManager.GetComponent<Animator>().SetTrigger("resetTrigger");
+    }
+
+    public void TidyPins()
+    {
+        cleanupManager.GetComponent<Animator>().SetTrigger("tidyTrigger");
+    }
+
+    public void StartGame()
     {
         ResetBall();
     }

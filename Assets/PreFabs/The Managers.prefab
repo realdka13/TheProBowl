@@ -118,6 +118,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7149802303431048268}
   - component: {fileID: 236800868536600234}
+  - component: {fileID: 46472501}
   m_Layer: 0
   m_Name: Cleanup Manager
   m_TagString: Untagged
@@ -160,6 +161,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &46472501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236800868536600233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6b3f3e16c7f4aa458ae6ecd997ed951, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pinSet: {fileID: 3700501647929700586, guid: 2daf4dcc8e0d6ad4caa6f3157a40b396, type: 3}
 --- !u!1 &508815496854878009
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,8 +308,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fc9cf482c0c18240914bae13a4199ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cleanupManager: {fileID: 236800868536600233}
   pinSensor: {fileID: 0}
-  bowlingBall: {fileID: 0}
+  bowlingBall: {fileID: 6194137949626925821, guid: ccc6795f2089c6e45a583a492cfe909a,
+    type: 3}
 --- !u!1 &2258592698688344027
 GameObject:
   m_ObjectHideFlags: 0
