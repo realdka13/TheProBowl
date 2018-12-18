@@ -476,6 +476,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3797676850024055517}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2023642500 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3751696750647774147, guid: 3c97eac284aea9848b81d21ba6da2e5e,
+    type: 3}
+  m_PrefabInstance: {fileID: 3797676850024055517}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &562293725291929971
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -548,6 +554,11 @@ PrefabInstance:
       propertyPath: pinSensor
       value: 
       objectReference: {fileID: 332320108}
+    - target: {fileID: 1862052326464581776, guid: a10c48065f2aba4499ce3aa42888a61a,
+        type: 3}
+      propertyPath: UI
+      value: 
+      objectReference: {fileID: 2023642500}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a10c48065f2aba4499ce3aa42888a61a, type: 3}
 --- !u!1001 &875228017182831444
@@ -813,20 +824,5 @@ PrefabInstance:
       propertyPath: bowlManager
       value: 
       objectReference: {fileID: 1862052326464581775}
-    - target: {fileID: 3797676849339420937, guid: 3c97eac284aea9848b81d21ba6da2e5e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2927939615161996609, guid: 3c97eac284aea9848b81d21ba6da2e5e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3271149966686315144, guid: 3c97eac284aea9848b81d21ba6da2e5e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c97eac284aea9848b81d21ba6da2e5e, type: 3}

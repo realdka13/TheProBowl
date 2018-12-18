@@ -8,6 +8,9 @@ public class BowlManager : MonoBehaviour
 
     public GameObject pinSensor;
     public GameObject bowlingBall;
+    public GameObject UI;
+
+    private bool ballThrown;
 
     private void ResetBall()
     {
@@ -19,12 +22,8 @@ public class BowlManager : MonoBehaviour
 
         //Respawn Bowling Ball
         bowlingBall = Instantiate(bowlingBall, new Vector3(0, .25f, -.1f), Quaternion.identity);
-    }
-
-    //Reset Ball if it goes out of bounds
-    public void BallOutOfBounds()
-    {
-        ResetBall();
+        ballThrown = false;
+        UI.GetComponent<UIManager>().ResetMaxVel();
     }
 
     //If ball is found, tell PinCounter that its been found
@@ -54,4 +53,27 @@ public class BowlManager : MonoBehaviour
         ResetBall();
     }
 
+    //Reset Ball if it goes out of bounds
+    public void BallOutOfBounds()
+    {
+        ResetBall();
+    }
+
+    //Get Bowling Ball Reference
+    public float GetBallVelocity()
+    {
+        if (bowlingBall != null && ballThrown == true)
+        {
+            return bowlingBall.GetComponent<Rigidbody>().velocity.magnitude;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
+    public void BallThrown()
+    {
+        ballThrown = true;
+    }
 }

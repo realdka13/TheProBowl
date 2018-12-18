@@ -20,14 +20,17 @@ public class UIManager : MonoBehaviour
     public Text firstCharText;
     public Text secondCharText;
     public Text thirdCharText;
+    public Text velocityCounter;
 
     //Bumper Toggle
     public Toggle bumpersToggle;
 
     //Other Variables
     public Button initialAcceptButton;
+    public Button ballStuckButton;
     private int playerCount = 1;
     private int currentPlayer = 1;
+    private float maxVel = 0;
 
     //Bumper Bools
     bool playerOneBumper;
@@ -75,6 +78,25 @@ public class UIManager : MonoBehaviour
         {
             initialAcceptButton.enabled = false;
         }
+
+        //Update Max Velocity
+        float ballVel = bowlManager.GetComponent<BowlManager>().GetBallVelocity();
+        if (ballVel > maxVel)
+        {
+            maxVel = ballVel;
+            velocityCounter.text = maxVel.ToString("F2");
+        }
+
+    }
+
+    public void ResetMaxVel()
+    {
+        maxVel = 0;
+    }
+
+    public void BallStuck()
+    {
+        bowlManager.GetComponent<BowlManager>().BallOutOfBounds();
     }
 
     public void DebugReset()
