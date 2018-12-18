@@ -13,8 +13,6 @@ public class BallCollision : MonoBehaviour
     {
         player = GameObject.Find("Player Controller");
         Physics.IgnoreCollision(player.GetComponent<Collider>(), GetComponent<Collider>());
-        ballHitSource = GetComponent<AudioSource>();
-        ballHitSource.enabled = true;
     }
 
     private void OnCollisionEnter(Collision collision)

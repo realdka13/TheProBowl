@@ -470,6 +470,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 631005134}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1448318981 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3751696750647774147, guid: 3c97eac284aea9848b81d21ba6da2e5e,
+    type: 3}
+  m_PrefabInstance: {fileID: 3797676850024055517}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1712283076 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3797676849066188826, guid: 3c97eac284aea9848b81d21ba6da2e5e,
@@ -548,6 +554,17 @@ PrefabInstance:
       propertyPath: pinSensor
       value: 
       objectReference: {fileID: 332320108}
+    - target: {fileID: 1862052326464581776, guid: a10c48065f2aba4499ce3aa42888a61a,
+        type: 3}
+      propertyPath: UI
+      value: 
+      objectReference: {fileID: 1448318981}
+    - target: {fileID: 1862052326464581776, guid: a10c48065f2aba4499ce3aa42888a61a,
+        type: 3}
+      propertyPath: bowlingBall
+      value: 
+      objectReference: {fileID: 6194137949626925821, guid: ccc6795f2089c6e45a583a492cfe909a,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a10c48065f2aba4499ce3aa42888a61a, type: 3}
 --- !u!1001 &875228017182831444

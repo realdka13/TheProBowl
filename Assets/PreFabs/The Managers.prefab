@@ -292,7 +292,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 7540244750566069744}
   m_Father: {fileID: 1185216556762766540}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -305,13 +306,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1862052326464581775}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fc9cf482c0c18240914bae13a4199ed, type: 3}
+  m_Script: {fileID: 11500000, guid: a349f627584d8204797363c2d30420bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cleanupManager: {fileID: 236800868536600233}
   pinSensor: {fileID: 0}
-  bowlingBall: {fileID: 6194137949626925821, guid: ccc6795f2089c6e45a583a492cfe909a,
-    type: 3}
+  bowlingBall: {fileID: 0}
+  UI: {fileID: 0}
 --- !u!1 &2258592698688344027
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,3 +407,61 @@ Transform:
   m_Father: {fileID: 1185216556762766540}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &9140475327882224638
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7540244750566069744}
+  - component: {fileID: 2449330356395047081}
+  - component: {fileID: 6164158164550418030}
+  m_Layer: 0
+  m_Name: Ball Thrown Sensor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7540244750566069744
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9140475327882224638}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 2.358}
+  m_LocalScale: {x: 2.1, y: 2, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3857932819311815924}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2449330356395047081
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9140475327882224638}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6164158164550418030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9140475327882224638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5d504f99d62c374382a5645d0d1e065, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bowlManager: {fileID: 1862052326464581775}

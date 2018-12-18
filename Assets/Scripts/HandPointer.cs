@@ -22,7 +22,7 @@ public class HandPointer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (OVRInput.Get(OVRInput.Button.SecondaryThumbstick))
+        if (OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger))
         {
             //Switch Laser to Right
             useRightLaser = true;
@@ -34,7 +34,7 @@ public class HandPointer : MonoBehaviour
             UI.GetComponentInChildren<OVRInputModule>().joyPadClickButton = OVRInput.Button.SecondaryIndexTrigger;
         }
 
-        if (OVRInput.Get(OVRInput.Button.PrimaryThumbstick))
+        if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger))
         {
             //Switch Laser To Left
             useRightLaser = false;
