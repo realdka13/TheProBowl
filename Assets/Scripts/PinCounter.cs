@@ -40,10 +40,9 @@ public class PinCounter : MonoBehaviour
     //Called win pins finally settle
     private void PinsSettled()
     {
-        print("Pins have settled, final count is: " + finalStandingCount);
         finalStandingCount = -1; //Reseting for next fram
         ballFound = false; //Resetting for next frame
-        bowlManager.GetComponent<BowlManager>().RollComplete();
+        bowlManager.GetComponent<BowlManager>().RollComplete(TrackStandingPins());
     }
 
     //Count the Standing Pins

@@ -5,10 +5,17 @@ using UnityEngine;
 public class BowlManager : MonoBehaviour
 {
     public GameObject cleanupManager;
-
     public GameObject pinSensor;
     public GameObject bowlingBall;
     public GameObject UI;
+    public GameObject scoreManager;
+
+    private int playerCount;
+    private int currentPlayer = 1;
+    private int maxRolls = 21;
+    private int currentRoll = 1;
+
+    private int leftStanding = 10;
 
     private bool ballThrown;
 
@@ -33,8 +40,41 @@ public class BowlManager : MonoBehaviour
     }
 
     //Roll is complete
-    public void RollComplete()
+    public void RollComplete(int standingPins)
     {
+        //Score Calculations
+        int score = 0;
+        if (currentRoll % 2 == 1)
+        {
+            score = 10 - standingPins;
+            leftStanding = standingPins;
+        }
+        else if (currentRoll % 2 == 0)
+        {
+            score = leftStanding - standingPins;
+        }
+        scoreManager.GetComponent<ScoreManager>().UpdateScore(currentPlayer,currentRoll,score);
+
+        if ((currentPlayer < playerCount) && (currentRoll % 2) == 0)
+        {
+            currentPlayer++;
+            currentRoll -= 1;
+            ResetPins();
+            UI.GetComponent<UIManager>().UpdatePlayerTurn(currentPlayer);
+            leftStanding = 10;
+        }
+        else if (currentPlayer == playerCount && (currentRoll % 2) == 0)
+        {
+            currentPlayer = 1;
+            ResetPins();
+            UI.GetComponent<UIManager>().UpdatePlayerTurn(currentPlayer);
+            currentRoll++;
+        }
+        else
+        {
+            TidyPins();
+            currentRoll++;
+        }
         ResetBall();
     }
 
@@ -50,6 +90,7 @@ public class BowlManager : MonoBehaviour
 
     public void StartGame()
     {
+        UI.GetComponent<UIManager>().UpdatePlayerTurn(currentPlayer);
         ResetBall();
     }
 
@@ -67,7 +108,7 @@ public class BowlManager : MonoBehaviour
             float ballX = bowlingBall.GetComponent<Rigidbody>().velocity.x;
             float ballZ = bowlingBall.GetComponent<Rigidbody>().velocity.z;
             float ballVel = Mathf.Sqrt(Mathf.Pow(ballX, 2) + Mathf.Pow(ballZ, 2));
-            return ballVel; //bowlingBall.GetComponent<Rigidbody>().velocity.magnitude;
+            return ballVel;
         }
         else
         {
@@ -79,4 +120,10 @@ public class BowlManager : MonoBehaviour
     {
         ballThrown = true;
     }
+
+    public void SetPlayerCount(int playersPlaying)
+    {
+        playerCount = playersPlaying;
+    }
+
 }

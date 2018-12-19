@@ -21,6 +21,7 @@ public class UIManager : MonoBehaviour
     public Text secondCharText;
     public Text thirdCharText;
     public Text velocityCounter;
+    public Text playerTurnName;
 
     //Bumper Toggle
     public Toggle bumpersToggle;
@@ -89,6 +90,34 @@ public class UIManager : MonoBehaviour
 
     }
 
+    public void UpdatePlayerTurn(int player)
+    {
+        if (player == 1)
+        {
+            playerTurnName.text = playerOneInitials;
+        }
+        if (player == 2)
+        {
+            playerTurnName.text = playerTwoInitials;
+        }
+        if (player == 3)
+        {
+            playerTurnName.text = playerThreeInitials;
+        }
+        if (player == 4)
+        {
+            playerTurnName.text = playerFourInitials;
+        }
+        if (player == 5)
+        {
+            playerTurnName.text = playerFiveInitials;
+        }
+        if (player == 6)
+        {
+            playerTurnName.text = playerSixInitials;
+        }
+    }
+
     public void ResetMaxVel()
     {
         maxVel = 0;
@@ -116,11 +145,7 @@ public class UIManager : MonoBehaviour
         initialsPanel.SetActive(true);
         scorePanel.SetActive(false);
         debugPanel.SetActive(false);
-    }
-
-    public int GetPlayerCount()
-    {
-        return playerCount;
+        bowlManager.GetComponent<BowlManager>().SetPlayerCount(playerCount);
     }
 
     public void RightArrow()
@@ -188,7 +213,7 @@ public class UIManager : MonoBehaviour
             bumpersToggle.isOn = false;
             initialsPlayerText.text = currentPlayer.ToString();
         }
-        else if (currentPlayer == 2 && currentPlayer < playerCount)
+        else if (currentPlayer == 2 && currentPlayer != playerCount)
         {
             playerTwoInitials = firstChar + secondChar + thirdChar;
             playerTwoBumper = bumpersToggle.isOn;
@@ -205,7 +230,7 @@ public class UIManager : MonoBehaviour
             bumpersToggle.isOn = false;
             initialsPlayerText.text = currentPlayer.ToString();
         }
-        else if (currentPlayer == 3 && currentPlayer < playerCount)
+        else if (currentPlayer == 3 && currentPlayer != playerCount)
         {
             playerThreeInitials = firstChar + secondChar + thirdChar;
             playerThreeBumper = bumpersToggle.isOn;
@@ -222,7 +247,7 @@ public class UIManager : MonoBehaviour
             bumpersToggle.isOn = false;
             initialsPlayerText.text = currentPlayer.ToString();
         }
-        else if (currentPlayer == 4 && currentPlayer < playerCount)
+        else if (currentPlayer == 4 && currentPlayer != playerCount)
         {
             playerFourInitials = firstChar + secondChar + thirdChar;
             playerFourBumper = bumpersToggle.isOn;
@@ -239,7 +264,7 @@ public class UIManager : MonoBehaviour
             bumpersToggle.isOn = false;
             initialsPlayerText.text = currentPlayer.ToString();
         }
-        else if (currentPlayer == 5 && currentPlayer < playerCount)
+        else if (currentPlayer == 5 && currentPlayer != playerCount)
         {
             playerFiveInitials = firstChar + secondChar + thirdChar;
             playerFiveBumper = bumpersToggle.isOn;
@@ -257,10 +282,46 @@ public class UIManager : MonoBehaviour
             initialsPlayerText.text = currentPlayer.ToString();
         }
 
-        else if (currentPlayer >= playerCount)
+        else if (currentPlayer == playerCount)
         {
-            playerSixInitials = firstChar + secondChar + thirdChar;
-            playerSixBumper = bumpersToggle.isOn;
+            if (currentPlayer == 1)
+            {
+                playerOneInitials = firstChar + secondChar + thirdChar;
+                playerOneBumper = bumpersToggle.isOn;
+                currentPlayer++;
+            }
+            if (currentPlayer == 2)
+            {
+                playerTwoInitials = firstChar + secondChar + thirdChar;
+                playerTwoBumper = bumpersToggle.isOn;
+                currentPlayer++;
+            }
+            if (currentPlayer == 3)
+            {
+                playerThreeInitials = firstChar + secondChar + thirdChar;
+                playerThreeBumper = bumpersToggle.isOn;
+                currentPlayer++;
+            }
+            if (currentPlayer == 4)
+            {
+                playerFourInitials = firstChar + secondChar + thirdChar;
+                playerFourBumper = bumpersToggle.isOn;
+                currentPlayer++;
+            }
+            if (currentPlayer == 5)
+            {
+                playerFiveInitials = firstChar + secondChar + thirdChar;
+                playerFiveBumper = bumpersToggle.isOn;
+                currentPlayer++;
+            }
+            if (currentPlayer == 6)
+            {
+                playerSixInitials = firstChar + secondChar + thirdChar;
+                playerSixBumper = bumpersToggle.isOn;
+                currentPlayer++;
+            }
+
+
             firstCharText.text = "_";
             secondCharText.text = "_";
             thirdCharText.text = "_";
@@ -271,6 +332,7 @@ public class UIManager : MonoBehaviour
             secondCharChosen = false;
             thirdCharChosen = false;
             bumpersToggle.isOn = false;
+
             //Set Panels
             startPanel.SetActive(false);
             initialsPanel.SetActive(false);

@@ -311,8 +311,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cleanupManager: {fileID: 236800868536600233}
   pinSensor: {fileID: 0}
-  bowlingBall: {fileID: 0}
+  bowlingBall: {fileID: 6194137949626925821, guid: ccc6795f2089c6e45a583a492cfe909a,
+    type: 3}
   UI: {fileID: 0}
+  scoreManager: {fileID: 5078918488208982243}
+  pinCounter: {fileID: 0}
 --- !u!1 &2258592698688344027
 GameObject:
   m_ObjectHideFlags: 0
@@ -356,6 +359,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 764434362503037914}
+  - component: {fileID: 1602114388}
   m_Layer: 0
   m_Name: Score Manager
   m_TagString: Untagged
@@ -377,6 +381,19 @@ Transform:
   m_Father: {fileID: 1185216556762766540}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1602114388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5078918488208982243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 409ec414b7987c94cb3fb8c7af5d556d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bowlManager: {fileID: 1862052326464581775}
 --- !u!1 &6712367987873842236
 GameObject:
   m_ObjectHideFlags: 0

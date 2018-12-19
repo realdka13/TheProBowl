@@ -25,7 +25,6 @@ public class PlayerControls : MonoBehaviour
     private static void Recenter()
     {
         UnityEngine.XR.InputTracking.Recenter();
-        Debug.Log("Recentered!");
     }
 
 }
