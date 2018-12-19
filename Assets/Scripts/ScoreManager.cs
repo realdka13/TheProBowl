@@ -18,32 +18,32 @@ public class ScoreManager : MonoBehaviour
     {
         if (player == 1)
         {
-            playerOneScore[roll] = score;
+            playerOneScore[roll - 1] = score;
             print("Player " + player + " Roll " + roll + " with a score of " + score);
         }
         else if (player == 2)
         {
-            playerTwoScore[roll] = score;
+            playerTwoScore[roll - 1] = score;
             print("Player " + player + " Roll " + roll + " with a score of " + score);
         }
         else if (player == 3)
         {
-            playerThreeScore[roll] = score;
+            playerThreeScore[roll - 1] = score;
             print("Player " + player + " Roll " + roll + " with a score of " + score);
         }
         else if (player == 4)
         {
-            playerFourScore[roll] = score;
+            playerFourScore[roll - 1] = score;
             print("Player " + player + " Roll " + roll + " with a score of " + score);
         }
         else if (player == 5)
         {
-            playerFiveScore[roll] = score;
+            playerFiveScore[roll - 1] = score;
             print("Player " + player + " Roll " + roll + " with a score of " + score);
         }
         else if (player == 6)
         {
-            playerSixScore[roll] = score;
+            playerSixScore[roll - 1] = score;
             print("Player " + player + " Roll " + roll + " with a score of " + score);
         }
         scoreBoard.GetComponent<ScoreBoards>().FillScoreBoard(player, roll, score);
