@@ -54,6 +54,10 @@ public class BowlManager : MonoBehaviour
             score = leftStanding - standingPins;
         }
         scoreManager.GetComponent<ScoreManager>().UpdateScore(currentPlayer,currentRoll,score);
+        if (score == 10 && currentRoll % 2 == 1) // If Strike
+        {
+            currentRoll++;
+        }
 
         if ((currentPlayer < playerCount) && (currentRoll % 2) == 0)
         {

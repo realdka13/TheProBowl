@@ -315,7 +315,6 @@ MonoBehaviour:
     type: 3}
   UI: {fileID: 0}
   scoreManager: {fileID: 5078918488208982243}
-  pinCounter: {fileID: 0}
 --- !u!1 &2258592698688344027
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,6 +393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bowlManager: {fileID: 1862052326464581775}
+  scoreBoard: {fileID: 0}
 --- !u!1 &6712367987873842236
 GameObject:
   m_ObjectHideFlags: 0

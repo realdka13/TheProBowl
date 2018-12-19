@@ -351,6 +351,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1165054868 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1165054868, guid: 3c97eac284aea9848b81d21ba6da2e5e,
+    type: 3}
+  m_PrefabInstance: {fileID: 3797676850024055517}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1448318981 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3751696750647774147, guid: 3c97eac284aea9848b81d21ba6da2e5e,
@@ -440,11 +446,10 @@ PrefabInstance:
       propertyPath: UI
       value: 
       objectReference: {fileID: 1448318981}
-    - target: {fileID: 1862052326464581776, guid: a10c48065f2aba4499ce3aa42888a61a,
-        type: 3}
-      propertyPath: pinCounter
+    - target: {fileID: 1602114388, guid: a10c48065f2aba4499ce3aa42888a61a, type: 3}
+      propertyPath: scoreBoard
       value: 
-      objectReference: {fileID: 332320108}
+      objectReference: {fileID: 1165054868}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a10c48065f2aba4499ce3aa42888a61a, type: 3}
 --- !u!1001 &875228017182831444
@@ -710,5 +715,10 @@ PrefabInstance:
       propertyPath: bowlManager
       value: 
       objectReference: {fileID: 1862052326464581775}
+    - target: {fileID: 3797676849339420937, guid: 3c97eac284aea9848b81d21ba6da2e5e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c97eac284aea9848b81d21ba6da2e5e, type: 3}

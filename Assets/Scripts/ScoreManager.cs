@@ -5,6 +5,7 @@ using UnityEngine;
 public class ScoreManager : MonoBehaviour
 {
     public GameObject bowlManager;
+    public GameObject scoreBoard;
 
     private int[] playerOneScore = new int[21];
     private int[] playerTwoScore = new int[21];
@@ -20,30 +21,31 @@ public class ScoreManager : MonoBehaviour
             playerOneScore[roll] = score;
             print("Player " + player + " Roll " + roll + " with a score of " + score);
         }
-        if (player == 2)
+        else if (player == 2)
         {
             playerTwoScore[roll] = score;
             print("Player " + player + " Roll " + roll + " with a score of " + score);
         }
-        if (player == 3)
+        else if (player == 3)
         {
             playerThreeScore[roll] = score;
             print("Player " + player + " Roll " + roll + " with a score of " + score);
         }
-        if (player == 4)
+        else if (player == 4)
         {
             playerFourScore[roll] = score;
             print("Player " + player + " Roll " + roll + " with a score of " + score);
         }
-        if (player == 5)
+        else if (player == 5)
         {
             playerFiveScore[roll] = score;
             print("Player " + player + " Roll " + roll + " with a score of " + score);
         }
-        if (player == 6)
+        else if (player == 6)
         {
             playerSixScore[roll] = score;
             print("Player " + player + " Roll " + roll + " with a score of " + score);
         }
+        scoreBoard.GetComponent<ScoreBoards>().FillScoreBoard(player, roll, score);
     }
 }

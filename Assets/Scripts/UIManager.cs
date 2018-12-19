@@ -23,6 +23,14 @@ public class UIManager : MonoBehaviour
     public Text velocityCounter;
     public Text playerTurnName;
 
+    //ScoreBoard Name Text
+    public Text player1Name;
+    public Text player2Name;
+    public Text player3Name;
+    public Text player4Name;
+    public Text player5Name;
+    public Text player6Name;
+
     //Bumper Toggle
     public Toggle bumpersToggle;
 
@@ -42,12 +50,12 @@ public class UIManager : MonoBehaviour
     bool playerSixBumper;
 
     //Characters
-    private string playerOneInitials;
-    private string playerTwoInitials;
-    private string playerThreeInitials;
-    private string playerFourInitials;
-    private string playerFiveInitials;
-    private string playerSixInitials;
+    private string playerOneInitials = null;
+    private string playerTwoInitials = null;
+    private string playerThreeInitials = null;
+    private string playerFourInitials = null;
+    private string playerFiveInitials = null;
+    private string playerSixInitials = null;
     private string firstChar = "A";
     private string secondChar = "A";
     private string thirdChar = "A";
@@ -339,7 +347,45 @@ public class UIManager : MonoBehaviour
             scorePanel.SetActive(true);
             debugPanel.SetActive(false);
 
-            //Spawn Ball
+            //Set Scoreboard names
+            player1Name.text = playerOneInitials;
+            player2Name.text = " ";
+            player3Name.text = " ";
+            player4Name.text = " ";
+            player5Name.text = " ";
+            player6Name.text = " ";
+            if (playerCount > 1)
+            {
+                player2Name.text = playerTwoInitials;
+                player3Name.text = " ";
+                player4Name.text = " ";
+                player5Name.text = " ";
+                player6Name.text = " ";
+            }
+            if (playerCount > 2)
+            {
+                player3Name.text = playerThreeInitials;
+                player4Name.text = " ";
+                player5Name.text = " ";
+                player6Name.text = " ";
+            }
+            if (playerCount > 3)
+            {
+                player4Name.text = playerFourInitials;
+                player5Name.text = " ";
+                player6Name.text = " ";
+            }
+            if (playerCount > 4)
+            {
+                player5Name.text = playerFiveInitials;
+                player6Name.text = " ";
+            }
+            if (playerCount > 5)
+            {
+                player6Name.text = playerSixInitials;
+            }
+
+            //Tell BowlManager UI is ready
             bowlManager.GetComponent<BowlManager>().StartGame();
         }
     }

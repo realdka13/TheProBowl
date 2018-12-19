@@ -329,6 +329,7 @@
     <Compile Include="Assets\Scripts\PinCounter.cs" />
     <Compile Include="Assets\Scripts\PlayerControls.cs" />
     <Compile Include="Assets\Scripts\RenewPins.cs" />
+    <Compile Include="Assets\Scripts\ScoreBoards.cs" />
     <Compile Include="Assets\Scripts\ScoreManager.cs" />
     <Compile Include="Assets\Scripts\UIManager.cs" />
     <None Include="Assets\Oculus\Avatar\Content\Materials\AvatarMaterialStateShader.cginc" />
