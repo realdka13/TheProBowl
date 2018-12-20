@@ -97,6 +97,7 @@ public class ScoreBoards : MonoBehaviour
             else if (score == 0)    //If Zero
             {
                 scoreB1[roll - 1].text = "-";
+                lastScore = score;
             }
 
             else
@@ -131,6 +132,7 @@ public class ScoreBoards : MonoBehaviour
             else if (score == 0)
             {
                 scoreB2[roll - 1].text = "-";
+                lastScore = score;
             }
 
             else
@@ -165,6 +167,7 @@ public class ScoreBoards : MonoBehaviour
             else if (score == 0)
             {
                 scoreB3[roll - 1].text = "-";
+                lastScore = score;
             }
 
             else
@@ -199,6 +202,7 @@ public class ScoreBoards : MonoBehaviour
             else if (score == 0)
             {
                 scoreB4[roll - 1].text = "-";
+                lastScore = score;
             }
 
             else
@@ -233,6 +237,7 @@ public class ScoreBoards : MonoBehaviour
             else if (score == 0)
             {
                 scoreB5[roll - 1].text = "-";
+                lastScore = score;
             }
 
             else
@@ -267,6 +272,7 @@ public class ScoreBoards : MonoBehaviour
             else if (score == 0)
             {
                 scoreB6[roll - 1].text = "-";
+                lastScore = score;
             }
 
             else
@@ -289,6 +295,33 @@ public class ScoreBoards : MonoBehaviour
                 }
                 player6Frame++;
             }
+        }
+    }
+    public void UpdatePreviousFrame(int player, int totalScore, int lastRoll)
+    {
+        if (player == 1)
+        {
+            sb1FrameTotals[player1Frame - 2].text = (totalScore - lastRoll).ToString();
+        }
+        if (player == 2)
+        {
+            sb2FrameTotals[player2Frame - 2].text = (totalScore - lastRoll).ToString();
+        }
+        if (player == 3)
+        {
+            sb3FrameTotals[player3Frame - 2].text = (totalScore - lastRoll).ToString();
+        }
+        if (player == 4)
+        {
+            sb4FrameTotals[player4Frame - 2].text = (totalScore - lastRoll).ToString();
+        }
+        if (player == 5)
+        {
+            sb5FrameTotals[player5Frame - 2].text = (totalScore - lastRoll).ToString();
+        }
+        if (player == 6)
+        {
+            sb6FrameTotals[player6Frame - 2].text = (totalScore - lastRoll).ToString();
         }
     }
 }
