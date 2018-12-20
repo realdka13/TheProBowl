@@ -21,7 +21,7 @@ public class ScoreManager : MonoBehaviour
     private int player5TotalScore = 0;
     private int player6TotalScore = 0;
 
-    private int lastScore;
+    private int lastScore = -1;
 
     private bool spareScoredLastRoll = false;
     private bool strikeScoredLastRoll = false;
@@ -37,6 +37,12 @@ public class ScoreManager : MonoBehaviour
                 player1TotalScore += score;
                 spareScoredLastRoll = false;
             }
+            if (strikeScored2RollsAgo)
+            {
+                strikeScored2RollsAgo = false;
+                player1TotalScore += score;
+                print("strike roll 2 new total = " + player1TotalScore);
+            }
             if (strikeScoredLastRoll)
             {
                 strikeScored2RollsAgo = true;
@@ -44,16 +50,10 @@ public class ScoreManager : MonoBehaviour
                 player1TotalScore += score;
                 print("strike roll 1 new total = " + player1TotalScore);
             }
-            if (strikeScored2RollsAgo)
-            {
-                strikeScoredLastRoll = false;
-                player1TotalScore += score;
-                print("strike roll 2 new total = " + player1TotalScore);
-            }
 
 
             //If Strike
-            if (roll % 2 == 0 && score == 10)
+            if (roll % 2 == 1 && score == 10)
             {
                 print("Strike Scored");
                 player1TotalScore += 10;
@@ -79,8 +79,8 @@ public class ScoreManager : MonoBehaviour
                 print("Score as normal");
                 lastScore = score;
                 player1TotalScore += score;
-                print("Score as normal new total = " + player1TotalScore);
             }
+            print("Final total = " + player1TotalScore);
         }
     }
 }

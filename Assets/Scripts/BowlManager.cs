@@ -59,7 +59,6 @@ public class BowlManager : MonoBehaviour
         //Check for a strike
         if (currentRoll % 2 == 1 && score == 10)
         {
-            print("STRIKE!");
             currentRoll++;
             ResetBall();
         }
