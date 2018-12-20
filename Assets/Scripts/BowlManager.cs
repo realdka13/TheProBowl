@@ -55,6 +55,7 @@ public class BowlManager : MonoBehaviour
         {
             score = leftStanding - standingPins;
         }
+        scoreManager.GetComponent<ScoreManager>().UpdateScore(currentPlayer, currentRoll, score); //Update Score
 
         //Check for a strike
         if (currentRoll % 2 == 1 && score == 10)
@@ -87,7 +88,6 @@ public class BowlManager : MonoBehaviour
             currentRoll++;
         }
         ResetBall();
-        scoreManager.GetComponent<ScoreManager>().UpdateScore(currentPlayer,currentRoll, score);
     }
 
     public void ResetPins()

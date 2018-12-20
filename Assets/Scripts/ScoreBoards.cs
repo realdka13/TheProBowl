@@ -84,7 +84,52 @@ public class ScoreBoards : MonoBehaviour
         }
     }
 
-    public void FillScoreBoard(int player, int roll, int score, int playersTotalScore)
+    public void FillScoreBoard(int player, int roll, int score, int playersTotalScore, int rollType)
     {
+        if (player == 1)
+        {
+            if (rollType == 2)//Strike
+            {
+                scoreB1[roll].text = "X";
+                player1Frame++;
+            }
+            if (rollType == 1)//Spare
+            {
+                scoreB1[roll - 1].text = "/";
+                player1Frame++;
+            }
+            if (rollType == 0)//Just a normal update
+            {
+                if (score == 0) //Check if zero
+                {
+                    scoreB1[roll - 1].text = "-";
+                }
+                else
+                {
+                    scoreB1[roll - 1].text = score.ToString();
+                }
+            }
+            if (roll % 2 == 0 && rollType == 0)//Incriment normally(when no strikes or spares)
+            {
+                sb1FrameTotals[player1Frame - 1].text = playersTotalScore.ToString();
+                player1Frame++;
+            }
+        }
+    }
+
+    public void UpdatePreviousFrame(int player, int playersTotalScore, int rollType)
+    {
+        if (player == 1)
+        {
+            if (rollType == 1)//Spare
+            {
+                sb1FrameTotals[player1Frame - 2].text = playersTotalScore.ToString();
+                print(player1Frame);
+            }
+            if (rollType == 2)//Strike
+            {
+                sb1FrameTotals[player1Frame - 2].text = playersTotalScore.ToString();
+            }
+        }
     }
 }

@@ -23,32 +23,34 @@ public class ScoreManager : MonoBehaviour
 
     private int lastScore = -1;
 
-    private bool spareScoredLastRoll = false;
-    private bool strikeScoredLastRoll = false;
-    private bool strikeScored2RollsAgo = false;
+    //player 1 status
+    private bool spareScoredLastRollOne = false;
+    private bool strikeScoredLastRollOne = false;
+    private bool strikeScored2RollsAgoOne = false;
+    private int rollType = -1;
 
     public void UpdateScore(int player, int roll, int score)
     {
         if (player == 1)
         {
             //Check for any extra points
-            if (spareScoredLastRoll)
+            if (spareScoredLastRollOne)
             {
                 player1TotalScore += score;
-                spareScoredLastRoll = false;
+                spareScoredLastRollOne = false;
+                scoreBoard.GetComponent<ScoreBoards>().UpdatePreviousFrame(player, player1TotalScore, 1);
             }
-            if (strikeScored2RollsAgo)
+            if (strikeScored2RollsAgoOne)
             {
-                strikeScored2RollsAgo = false;
+                strikeScored2RollsAgoOne = false;
                 player1TotalScore += score;
-                print("strike roll 2 new total = " + player1TotalScore);
+                scoreBoard.GetComponent<ScoreBoards>().UpdatePreviousFrame(player, player1TotalScore - lastScore, 2);
             }
-            if (strikeScoredLastRoll)
+            if (strikeScoredLastRollOne)
             {
-                strikeScored2RollsAgo = true;
-                strikeScoredLastRoll = false;
+                strikeScored2RollsAgoOne = true;
+                strikeScoredLastRollOne = false;
                 player1TotalScore += score;
-                print("strike roll 1 new total = " + player1TotalScore);
             }
 
 
@@ -59,18 +61,23 @@ public class ScoreManager : MonoBehaviour
                 player1TotalScore += 10;
 
                 //Plus next two rolls
-                strikeScoredLastRoll = true;
-            }
+                strikeScoredLastRollOne = true;
 
+                //Set Score Type
+                rollType = 2;//Strike
+            }
             //If Spare
-            else if ((roll % 2 == 1) && score + lastScore == 10)
+            else if ((roll % 2 == 0) && score + lastScore == 10)
             {
                 print("Spare Scored");
                 lastScore = 0;
                 player1TotalScore += score;
 
                 //plus next roll
-                spareScoredLastRoll = true;
+                spareScoredLastRollOne = true;
+
+                //Set score Type
+                rollType = 1;//Spare
             }
 
             //If Normal
@@ -79,8 +86,11 @@ public class ScoreManager : MonoBehaviour
                 print("Score as normal");
                 lastScore = score;
                 player1TotalScore += score;
+                rollType = 0;
             }
             print("Final total = " + player1TotalScore);
+            scoreBoard.GetComponent<ScoreBoards>().FillScoreBoard(player,roll,score, player1TotalScore,rollType);
+            rollType = -1;
         }
     }
 }
