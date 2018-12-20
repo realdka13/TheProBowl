@@ -44,7 +44,7 @@ public class BowlManager : MonoBehaviour
     public void RollComplete(int standingPins)
     {
         //Score Calculations
-        int score = 0;
+        int score = 0;  //What is score?
         if (currentRoll % 2 == 1)
         {
             score = 10 - standingPins;
@@ -55,18 +55,17 @@ public class BowlManager : MonoBehaviour
         {
             score = leftStanding - standingPins;
         }
-        scoreManager.GetComponent<ScoreManager>().UpdateScore(currentPlayer,currentRoll,score);
-        if (score == 10 && currentRoll % 2 == 1) // If Strike
+
+        //Check for a strike
+        if (currentRoll % 2 == 1 && score == 10)
         {
-            scoreManager.GetComponent<ScoreManager>().StrikeScored();
+            print("STRIKE!");
             currentRoll++;
-        }
-        else if (score + lastScore == 10 && currentRoll % 2 == 0)//If Spare
-        {
-            scoreManager.GetComponent<ScoreManager>().SpareScored();
+            ResetBall();
         }
 
-        if ((currentPlayer < playerCount) && (currentRoll % 2) == 0) //Player Change
+        //Player Change every other roll
+        if ((currentPlayer < playerCount) && (currentRoll % 2) == 0)
         {
             currentPlayer++;
             currentRoll -= 1;
@@ -82,12 +81,14 @@ public class BowlManager : MonoBehaviour
             UI.GetComponent<UIManager>().UpdatePlayerTurn(currentPlayer);
             currentRoll++;
         }
+        //Tidy
         else
         {
             TidyPins();
             currentRoll++;
         }
         ResetBall();
+        scoreManager.GetComponent<ScoreManager>().UpdateScore(currentPlayer,currentRoll, score);
     }
 
     public void ResetPins()

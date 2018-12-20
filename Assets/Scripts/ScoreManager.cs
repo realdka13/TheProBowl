@@ -21,93 +21,66 @@ public class ScoreManager : MonoBehaviour
     private int player5TotalScore = 0;
     private int player6TotalScore = 0;
 
-    private bool spareToken = false;
-    private bool strikeToken = false;
+    private int lastScore;
+
+    private bool spareScoredLastRoll = false;
+    private bool strikeScoredLastRoll = false;
+    private bool strikeScored2RollsAgo = false;
 
     public void UpdateScore(int player, int roll, int score)
     {
         if (player == 1)
         {
-            playerOneScore[roll - 1] = score;
-            player1TotalScore += score;
-            scoreBoard.GetComponent<ScoreBoards>().FillScoreBoard(player, roll, score, player1TotalScore);
-            if (spareToken == true)
+            //Check for any extra points
+            if (spareScoredLastRoll)
             {
-                player1TotalScore += playerOneScore[roll-1];
-                scoreBoard.GetComponent<ScoreBoards>().UpdatePreviousFrame(player,player1TotalScore, playerOneScore[roll - 1]);
-                spareToken = false;
+                player1TotalScore += score;
+                spareScoredLastRoll = false;
             }
-        }
-        else if (player == 2)
-        {
-            playerTwoScore[roll - 1] = score;
-            player2TotalScore += score;
-            scoreBoard.GetComponent<ScoreBoards>().FillScoreBoard(player, roll, score, player2TotalScore);
-            if (spareToken == true)
+            if (strikeScoredLastRoll)
             {
-                player2TotalScore += playerTwoScore[roll - 1];
-                scoreBoard.GetComponent<ScoreBoards>().UpdatePreviousFrame(player, player2TotalScore, playerTwoScore[roll - 1]);
-                spareToken = false;
+                strikeScored2RollsAgo = true;
+                strikeScoredLastRoll = false;
+                player1TotalScore += score;
+                print("strike roll 1 new total = " + player1TotalScore);
             }
-        }
-        else if (player == 3)
-        {
-            playerThreeScore[roll - 1] = score;
-            player3TotalScore += score;
-            scoreBoard.GetComponent<ScoreBoards>().FillScoreBoard(player, roll, score, player3TotalScore);
-            if (spareToken == true)
+            if (strikeScored2RollsAgo)
             {
-                player3TotalScore += playerThreeScore[roll - 1];
-                scoreBoard.GetComponent<ScoreBoards>().UpdatePreviousFrame(player, player3TotalScore, playerThreeScore[roll - 1]);
-                spareToken = false;
+                strikeScoredLastRoll = false;
+                player1TotalScore += score;
+                print("strike roll 2 new total = " + player1TotalScore);
             }
-        }
-        else if (player == 4)
-        {
-            playerFourScore[roll - 1] = score;
-            player4TotalScore += score;
-            scoreBoard.GetComponent<ScoreBoards>().FillScoreBoard(player, roll, score, player4TotalScore);
-            if (spareToken == true)
+
+
+            //If Strike
+            if (roll % 2 == 0 && score == 10)
             {
-                player4TotalScore += playerFourScore[roll - 1];
-                scoreBoard.GetComponent<ScoreBoards>().UpdatePreviousFrame(player, player4TotalScore, playerFourScore[roll - 1]);
-                spareToken = false;
+                print("Strike Scored");
+                player1TotalScore += 10;
+
+                //Plus next two rolls
+                strikeScoredLastRoll = true;
             }
-        }
-        else if (player == 5)
-        {
-            playerFiveScore[roll - 1] = score;
-            player5TotalScore += score;
-            scoreBoard.GetComponent<ScoreBoards>().FillScoreBoard(player, roll, score, player5TotalScore);
-            if (spareToken == true)
+
+            //If Spare
+            else if ((roll % 2 == 1) && score + lastScore == 10)
             {
-                player5TotalScore += playerFiveScore[roll - 1];
-                scoreBoard.GetComponent<ScoreBoards>().UpdatePreviousFrame(player, player5TotalScore, playerFiveScore[roll - 1]);
-                spareToken = false;
+                print("Spare Scored");
+                lastScore = 0;
+                player1TotalScore += score;
+
+                //plus next roll
+                spareScoredLastRoll = true;
             }
-        }
-        else if (player == 6)
-        {
-            playerSixScore[roll - 1] = score;
-            player6TotalScore += score;
-            scoreBoard.GetComponent<ScoreBoards>().FillScoreBoard(player, roll, score, player6TotalScore);
-            if (spareToken == true)
+
+            //If Normal
+            else
             {
-                player6TotalScore += playerSixScore[roll - 1];
-                scoreBoard.GetComponent<ScoreBoards>().UpdatePreviousFrame(player, player6TotalScore, playerSixScore[roll - 1]);
-                spareToken = false;
+                print("Score as normal");
+                lastScore = score;
+                player1TotalScore += score;
+                print("Score as normal new total = " + player1TotalScore);
             }
         }
     }
-
-    public void StrikeScored()
-    {
-        strikeToken = true;
-    }
-
-    public void SpareScored()
-    {
-        spareToken = true;
-    }
-
 }
