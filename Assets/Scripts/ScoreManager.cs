@@ -33,24 +33,28 @@ public class ScoreManager : MonoBehaviour
     {
         if (player == 1)
         {
+            playerOneScore[roll - 1] = score;
             //Check for any extra points
-            if (spareScoredLastRollOne)
+            if (roll < 20)//If not frame 10 + 1 to account for anything is frame 18
             {
-                player1TotalScore += score;
-                spareScoredLastRollOne = false;
-                scoreBoard.GetComponent<ScoreBoards>().UpdatePreviousFrame(player, player1TotalScore, 1);
-            }
-            if (strikeScored2RollsAgoOne)
-            {
-                strikeScored2RollsAgoOne = false;
-                player1TotalScore += score;
-                scoreBoard.GetComponent<ScoreBoards>().UpdatePreviousFrame(player, player1TotalScore - lastScore, 2);
-            }
-            if (strikeScoredLastRollOne)
-            {
-                strikeScored2RollsAgoOne = true;
-                strikeScoredLastRollOne = false;
-                player1TotalScore += score;
+                if (spareScoredLastRollOne)
+                {
+                    player1TotalScore += score;
+                    spareScoredLastRollOne = false;
+                    scoreBoard.GetComponent<ScoreBoards>().UpdatePreviousFrame(player, player1TotalScore, 1, roll);
+                }
+                if (strikeScored2RollsAgoOne)
+                {
+                    strikeScored2RollsAgoOne = false;
+                    player1TotalScore += score;
+                    scoreBoard.GetComponent<ScoreBoards>().UpdatePreviousFrame(player, player1TotalScore - lastScore, 2, roll);
+                }
+                if (strikeScoredLastRollOne)
+                {
+                    strikeScored2RollsAgoOne = true;
+                    strikeScoredLastRollOne = false;
+                    player1TotalScore += score;
+                }
             }
 
 

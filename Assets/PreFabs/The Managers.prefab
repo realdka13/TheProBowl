@@ -315,6 +315,7 @@ MonoBehaviour:
     type: 3}
   UI: {fileID: 0}
   scoreManager: {fileID: 5078918488208982243}
+  scoreBoard: {fileID: 0}
 --- !u!1 &2258592698688344027
 GameObject:
   m_ObjectHideFlags: 0

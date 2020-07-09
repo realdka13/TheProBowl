@@ -7,7 +7,7 @@ public class ScoreBoards : MonoBehaviour
 {
     public Text[] scoreB1 = new Text[21];
     public Text[] sb1FrameTotals = new Text[10];
-    private int player1Frame = 1;
+    private int player1Frame = 9;
 
     public Text[] scoreB2 = new Text[21];
     public Text[] sb2FrameTotals = new Text[10];
@@ -30,6 +30,7 @@ public class ScoreBoards : MonoBehaviour
     private int player6Frame = 1;
 
     private int lastScore;
+    private bool roll21Awarded = false;
 
     // Start is called before the first frame update
     void Start()
@@ -88,48 +89,136 @@ public class ScoreBoards : MonoBehaviour
     {
         if (player == 1)
         {
-            if (rollType == 2)//Strike
+            if (roll < 19)
             {
-                scoreB1[roll].text = "X";
-                player1Frame++;
-            }
-            if (rollType == 1)//Spare
-            {
-                scoreB1[roll - 1].text = "/";
-                player1Frame++;
-            }
-            if (rollType == 0)//Just a normal update
-            {
-                if (score == 0) //Check if zero
+                if (rollType == 2)//Strike
                 {
-                    scoreB1[roll - 1].text = "-";
+                    scoreB1[roll].text = "X";
+                    player1Frame++;
                 }
-                else
+                if (rollType == 1)//Spare
                 {
-                    scoreB1[roll - 1].text = score.ToString();
+                    scoreB1[roll - 1].text = "/";
+                    player1Frame++;
+                }
+                if (rollType == 0)//Just a normal update
+                {
+                    if (score == 0) //Check if zero
+                    {
+                        scoreB1[roll - 1].text = "-";
+                    }
+                    else
+                    {
+                        scoreB1[roll - 1].text = score.ToString();
+                    }
+                }
+                if (roll % 2 == 0 && rollType == 0)//Incriment normally(when no strikes or spares)
+                {
+                    sb1FrameTotals[player1Frame - 1].text = playersTotalScore.ToString();
+                    player1Frame++;
                 }
             }
-            if (roll % 2 == 0 && rollType == 0)//Incriment normally(when no strikes or spares)
+
+            //Final Frame Stuff
+            if (roll == 19)
             {
+                if (rollType == 2)//Strike
+                {
+                    scoreB1[roll - 1].text = "X";
+                }
+                if (rollType == 0)//Just a normal update
+                {
+                    if (score == 0) //Check if zero
+                    {
+                        scoreB1[roll - 1].text = "-";
+                    }
+                    else
+                    {
+                        scoreB1[roll - 1].text = score.ToString();
+                    }
+                }
+            }
+
+            if (roll == 20)
+            {
+                if (rollType == 2)//Strike
+                {
+                    scoreB1[roll - 1].text = "X";
+                }
+                if (rollType == 1)//Spare
+                {
+                    scoreB1[roll - 1].text = "/";
+                }
+                if (rollType == 0)//Just a normal update
+                {
+                    if (score == 0) //Check if zero
+                    {
+                        scoreB1[roll - 1].text = "-";
+                    }
+                    else
+                    {
+                        scoreB1[roll - 1].text = score.ToString();
+                    }
+                }
+                if (roll21Awarded != true) //Update last frame now if no roll 21
+                {
+                    sb1FrameTotals[player1Frame - 1].text = playersTotalScore.ToString();
+                }
+            }
+
+            if (roll == 21)
+            {
+                if (rollType == 2)//Strike
+                {
+                    scoreB1[roll].text = "X";
+                }
+                if (rollType == 0)//Just a normal update
+                {
+                    if (score == 0) //Check if zero
+                    {
+                        scoreB1[roll - 1].text = "-";
+                    }
+                    else
+                    {
+                        scoreB1[roll - 1].text = score.ToString();
+                    }
+                }
                 sb1FrameTotals[player1Frame - 1].text = playersTotalScore.ToString();
-                player1Frame++;
             }
         }
     }
 
-    public void UpdatePreviousFrame(int player, int playersTotalScore, int rollType)
+    public void UpdatePreviousFrame(int player, int playersTotalScore, int rollType, int roll)
     {
         if (player == 1)
         {
             if (rollType == 1)//Spare
             {
-                sb1FrameTotals[player1Frame - 2].text = playersTotalScore.ToString();
-                print(player1Frame);
+                if (roll < 19)  //If not frame 21
+                {
+                    sb1FrameTotals[player1Frame - 2].text = playersTotalScore.ToString();
+                }
+                else
+                {
+                    sb1FrameTotals[player1Frame - 1].text = playersTotalScore.ToString();
+                }
             }
             if (rollType == 2)//Strike
             {
-                sb1FrameTotals[player1Frame - 2].text = playersTotalScore.ToString();
+                if (roll < 19) // I not frame 21
+                {
+                    sb1FrameTotals[player1Frame - 2].text = playersTotalScore.ToString();
+                }
+                else
+                {
+                    sb1FrameTotals[player1Frame - 1].text = playersTotalScore.ToString();
+                }
             }
         }
+    }
+
+    public void Roll21Award()
+    {
+        roll21Awarded = true;
     }
 }

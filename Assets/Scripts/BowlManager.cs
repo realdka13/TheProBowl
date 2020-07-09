@@ -9,16 +9,19 @@ public class BowlManager : MonoBehaviour
     public GameObject bowlingBall;
     public GameObject UI;
     public GameObject scoreManager;
+    public GameObject scoreBoard;
 
     private int playerCount;
     private int currentPlayer = 1;
     private int maxRolls = 21;
-    private int currentRoll = 1;
+    private int currentRoll = 17;
 
     private int leftStanding = 10;
     private int lastScore;
 
     private bool ballThrown;
+    private bool roll21Awarded = false;
+    private bool roll19Strike = false;
 
     private void ResetBall()
     {
@@ -43,51 +46,136 @@ public class BowlManager : MonoBehaviour
     //Roll is complete
     public void RollComplete(int standingPins)
     {
-        //Score Calculations
-        int score = 0;  //What is score?
-        if (currentRoll % 2 == 1)
+        if (currentRoll < 19)
         {
-            score = 10 - standingPins;
-            leftStanding = standingPins;
-            lastScore = score;
-        }
-        else if (currentRoll % 2 == 0)
-        {
-            score = leftStanding - standingPins;
-        }
-        scoreManager.GetComponent<ScoreManager>().UpdateScore(currentPlayer, currentRoll, score); //Update Score
+            //Score Calculations
+            int score = 0;  //What is score?
+            if (currentRoll % 2 == 1)
+            {
+                score = 10 - standingPins;
+                leftStanding = standingPins;
+                lastScore = score;
+            }
+            else if (currentRoll % 2 == 0)
+            {
+                score = leftStanding - standingPins;
+            }
+            scoreManager.GetComponent<ScoreManager>().UpdateScore(currentPlayer, currentRoll, score); //Update Score
 
-        //Check for a strike
-        if (currentRoll % 2 == 1 && score == 10)
-        {
-            currentRoll++;
+            //Check for a strike
+            if (currentRoll % 2 == 1 && score == 10)
+            {
+                currentRoll++;
+                ResetBall();
+            }
+
+            //Player Change every other roll
+            if ((currentPlayer < playerCount) && (currentRoll % 2) == 0)
+            {
+                currentPlayer++;
+                currentRoll -= 1;
+                ResetPins();
+                UI.GetComponent<UIManager>().UpdatePlayerTurn(currentPlayer);
+                leftStanding = 10;
+                lastScore = 0;
+            }
+            else if (currentPlayer == playerCount && (currentRoll % 2) == 0)
+            {
+                currentPlayer = 1;
+                ResetPins();
+                UI.GetComponent<UIManager>().UpdatePlayerTurn(currentPlayer);
+                currentRoll++;
+            }
+            //Tidy
+            else
+            {
+                TidyPins();
+                currentRoll++;
+            }
             ResetBall();
         }
+        else //Last Frame Stuffs
+        {
+            if (currentRoll == 19)
+            {
+                //Score Calculations
+                int score = 0;  //What is score?
+                score = 10 - standingPins;
+                leftStanding = standingPins;
+                lastScore = score;
+                print("Roll 19 laast score = " + lastScore);
+                scoreManager.GetComponent<ScoreManager>().UpdateScore(currentPlayer, currentRoll, score); //Update Score
 
-        //Player Change every other roll
-        if ((currentPlayer < playerCount) && (currentRoll % 2) == 0)
-        {
-            currentPlayer++;
-            currentRoll -= 1;
-            ResetPins();
-            UI.GetComponent<UIManager>().UpdatePlayerTurn(currentPlayer);
-            leftStanding = 10;
-            lastScore = 0;
+                if (score == 10)
+                {
+                    print("STRIKE ON ROLL 19!");
+                    roll19Strike = true;
+                    currentRoll++;
+                    ResetBall();
+                    ResetPins();
+                }
+                else
+                {
+                    print("Roll 19 not a strike");
+                    leftStanding = standingPins;
+                    currentRoll++;
+                    ResetBall();
+                    TidyPins();
+                }
+            }
+            else if (currentRoll == 20)
+            {
+                //Score Calculations
+                int score = 0;  //What is score?
+                if (roll19Strike) //If roll 19 was strike
+                {
+                    score = 10 - standingPins;
+                }
+                else //IF roll 19 was spare
+                {
+                    score = leftStanding - standingPins;
+                }
+
+                //Check if strike quick to let socreboard know
+                if (score + lastScore >= 10)
+                {
+                    print("Roll 21 Awarded");
+                    roll21Awarded = true;
+                    scoreBoard.GetComponent<ScoreBoards>().Roll21Award();
+                }
+                scoreManager.GetComponent<ScoreManager>().UpdateScore(currentPlayer, currentRoll, score); //Update Score
+
+                //Incriment Roll and reset pins
+                if (score + lastScore == 10)
+                {
+                    currentRoll++;
+                    ResetPins();
+                }
+                else
+                {
+                    GameOver();
+                }
+            }
+            else if (currentRoll == 21 && roll21Awarded == true)
+            {
+
+                //Score Calculations
+                int score = 0;  //What is score?
+                if (currentRoll % 2 == 1)
+                {
+                    score = 10 - standingPins;
+                    leftStanding = standingPins;
+                    lastScore = score;
+                }
+                else if (currentRoll % 2 == 0)
+                {
+                    score = leftStanding - standingPins;
+                }
+                scoreManager.GetComponent<ScoreManager>().UpdateScore(currentPlayer, currentRoll, score); //Update Score
+
+                GameOver();
+            }
         }
-        else if (currentPlayer == playerCount && (currentRoll % 2) == 0)
-        {
-            currentPlayer = 1;
-            ResetPins();
-            UI.GetComponent<UIManager>().UpdatePlayerTurn(currentPlayer);
-            currentRoll++;
-        }
-        //Tidy
-        else
-        {
-            TidyPins();
-            currentRoll++;
-        }
-        ResetBall();
     }
 
     public void ResetPins()
@@ -136,6 +224,13 @@ public class BowlManager : MonoBehaviour
     public void SetPlayerCount(int playersPlaying)
     {
         playerCount = playersPlaying;
+    }
+
+    public void GameOver()
+    {
+        print("Game Over");
+        ResetPins();
+        //More end game stuff
     }
 
 }
